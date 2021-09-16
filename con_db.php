@@ -1,0 +1,1 @@
+<?php $conex = mysqli_connect("localHost","root","","registro");
