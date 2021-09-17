@@ -62,3 +62,7 @@ a {
   background-color: blanchedalmond;
   color: rgb(145, 145, 145);
 }
+
+img {
+  height: 50px;
+}

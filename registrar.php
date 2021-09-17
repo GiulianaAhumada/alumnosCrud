@@ -9,8 +9,13 @@
 		$dniAlumno = trim($_POST['dniAlumno']);
 	    $curso = trim($_POST['curso']);
 		$asignatura = trim($_POST['asignatura']);
-	    
-	    $consulta = "INSERT INTO datosAlumnos(nombreAlumno, apellidoAlumno, dniAlumno, curso, asignatura) VALUES ('$nombreAlumno', '$apellidoAlumno', '$dniAlumno', '$curso', '$asignatura')";
+
+		if(is_uploaded_file($_FILES['foto']['tmp_name'])){
+            $archivo = $_FILES['foto']['name'];
+            move_uploaded_file($_FILES['foto']['tmp_name'], 'imagenes/'.$archivo);
+		}
+
+	    $consulta = "INSERT INTO datosAlumnos(nombreAlumno, apellidoAlumno, dniAlumno, curso, asignatura, foto) VALUES ('$nombreAlumno', '$apellidoAlumno', '$dniAlumno', '$curso', '$asignatura', '$archivo')";
 	    $resultado = mysqli_query($conex,$consulta);
 
 	}

@@ -13,7 +13,7 @@
 
 <body>
     <div class="content">
-        <form method="post" class="formulario">
+        <form method="post" class="formulario" enctype="multipart/form-data">
             <h1>CRUD Alumnos</h1>
             <p>Nombre</p><input type="text" name="nombreAlumno" required>
             <p>Apellido</p><input type="text" name="apellidoAlumno" required>
@@ -37,12 +37,16 @@
                 <option value="I.P.P.">I.P.P.</option>
                 <option value="A.D.O.">A.D.O.</option>
             </select>
+
+            <p>Foto: </p><input type="file" name="foto" accept="image/*"/>
             <input type="submit" name="register" class="enviar">
         </form>
 
         <?php
         include("registrar.php");
         ?>
+
+        <div class="crud">
 
         <?php
             if (isset($_GET['editar'])) {
@@ -57,7 +61,6 @@
             } 
         ?>
 
-        <div class="crud">
             <table class="tabla">
                 <tr>
                     <th> Nombre </th>
@@ -65,6 +68,7 @@
                     <th> DNI </th>
                     <th> Curso </th>
                     <th> Asignatura </th>
+                    <th> </th>
                     <th> Editar </th>
                     <th> Eliminar </th>
                 </tr>
@@ -83,6 +87,7 @@
                         $dniAlumno = $row['dniAlumno'];
                         $curso = $row['curso'];
                         $asignatura = $row['asignatura'];
+                        $archivo = $row['foto'];
                 ?>
 
                 <tr>
@@ -91,6 +96,7 @@
                     <td> <?php echo $dniAlumno; ?> </td>
                     <td> <?php echo $curso; ?> Año </td>
                     <td> <?php echo $asignatura; ?> </td>
+                    <td> <img src="imagenes/<?php echo $archivo ?>" alt=""/> </td>
                     <td> <a text-decoration="none" href="index.php?editar=<?php echo $idAlumno; ?>">Editar</a></td>
                     <td> <a href="index.php?borrar=<?php echo $idAlumno; ?>">Eliminar</a> </td>
                 </tr>

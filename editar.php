@@ -43,6 +43,8 @@
         <option value="A.D.O."<?php if($asignatura=="A.D.O."){echo "selected";} ?>>A.D.O.</option>
     </select></br>
 
+    <input type="file" name="foto" accept="image/*"/>
+
     <input type="submit" name="actualizar" value="Actualizar datos">
 </form>
 
@@ -53,8 +55,14 @@
         $actualizar_dni = $_POST['dni'];
         $actualizar_curso = $_POST['curso'];
         $actualizar_asignatura = $_POST['asignatura'];
+        $actualizar_archivo = $_POST['foto'];
 
-        $actualizar = "UPDATE datosAlumnos SET nombreAlumno='$actualizar_nombre', apellidoAlumno='$actualizar_apellido', dniAlumno='$actualizar_dni', curso='$actualizar_curso', asignatura='$actualizar_asignatura' WHERE idAlumno='$editar_id'";
+        if(is_uploaded_file($_FILES['foto']['tmp_name'])){
+            $actualizar_archivo = $_FILES['foto']['name'];
+            move_uploaded_file($_FILES['foto']['tmp_name'], 'imagenes/'.$archivo);
+		}
+
+        $actualizar = "UPDATE datosAlumnos SET nombreAlumno='$actualizar_nombre', apellidoAlumno='$actualizar_apellido', dniAlumno='$actualizar_dni', curso='$actualizar_curso', asignatura='$actualizar_asignatura', foto='$actualizar_archivo' WHERE idAlumno='$editar_id'";
 
         $ejecutar = mysqli_query($conex,$actualizar);
 
