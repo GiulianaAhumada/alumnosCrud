@@ -44,6 +44,19 @@
         include("registrar.php");
         ?>
 
+        <?php
+            if (isset($_GET['editar'])) {
+                include("editar.php");
+            }
+
+            if (isset($_GET['borrar'])) {
+                $borrar_id = $_GET ['borrar'];
+                
+                $borrar = "DELETE FROM datosAlumnos WHERE idAlumno='$borrar_id'";
+                $ejecutar = mysqli_query ($conex, $borrar);
+            } 
+        ?>
+
         <div class="crud">
             <table class="tabla">
                 <tr>
@@ -86,18 +99,6 @@
                 } ?>
 
             </table>
-            <?php
-            if (isset($_GET['editar'])) {
-                include("editar.php");
-            }
-
-            if (isset($_GET['borrar'])) {
-                    $borrar_id = $_GET ['borrar'];
-                
-                    $borrar = "DELETE FROM datosAlumnos WHERE idAlumno='$borrar_id'";
-                    $ejecutar = mysqli_query ($conex, $borrar);
-                } 
-                ?>
         </div>
 
     </div>
