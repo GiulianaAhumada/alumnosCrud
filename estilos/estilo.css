@@ -18,7 +18,7 @@ body {
   align-items: center;
 }
 
-form {
+.formulario {
   width: 30%;
   min-width: 430px;
   padding: 15px 70px;
@@ -27,7 +27,7 @@ form {
   border: 1px solid rgb(255, 255, 255);
 }
 
-select {
+.curso, .asignatura {
   background-color: rgba(255, 255, 255, 0.884);
   height: 30px;
   border-radius: 3px;
@@ -36,13 +36,13 @@ select {
   color: black;
 }
 
-input {
+.enviar {
   border: none;
   height: 30px;
   border-radius: 3px;
 }
 
-input[type="submit"] {
+.enviar[type="submit"] {
   cursor: pointer;
   width: 20%;
   float: right;
@@ -52,4 +52,13 @@ input[type="submit"] {
 
 .crud {
   background-color: rgb(195, 212, 212);
+}
+
+a {
+  padding: 2px;
+  padding-top: 1px;
+  border-radius: 3px;
+  text-decoration: none;
+  background-color: blanchedalmond;
+  color: rgb(145, 145, 145);
 }

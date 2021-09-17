@@ -13,7 +13,7 @@
 
 <body>
     <div class="content">
-        <form method="post">
+        <form method="post" class="formulario">
             <h1>CRUD Alumnos</h1>
             <p>Nombre</p><input type="text" name="nombreAlumno" required>
             <p>Apellido</p><input type="text" name="apellidoAlumno" required>
@@ -21,7 +21,7 @@
 
 
             <p>Curso</p>
-            <select name=curso>
+            <select name=curso class="curso">
                 <option value="1º">1º Año</option>
                 <option value="2º">2º Año</option>
                 <option value="3º">3º Año</option>
@@ -32,12 +32,12 @@
             </select>
 
             <p>Asignatura:</p>
-            <select name=asignatura>
+            <select name=asignatura class="asignatura">
                 <option value="Programacion">Programacion</option>
                 <option value="I.P.P.">I.P.P.</option>
                 <option value="A.D.O.">A.D.O.</option>
             </select>
-            <input type="submit" name="register">
+            <input type="submit" name="register" class="enviar">
         </form>
 
         <?php
@@ -78,7 +78,7 @@
                     <td> <?php echo $dniAlumno; ?> </td>
                     <td> <?php echo $curso; ?> Año </td>
                     <td> <?php echo $asignatura; ?> </td>
-                    <td> <a href="editar.php?id=<?php echo $idAlumno; ?>">Editar</a></td>
+                    <td> <a text-decoration="none" href="index.php?editar=<?php echo $idAlumno; ?>">Editar</a></td>
                     <td> <a href="index.php?borrar=<?php echo $idAlumno; ?>">Eliminar</a> </td>
                 </tr>
 
