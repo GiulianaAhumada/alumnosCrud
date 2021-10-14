@@ -1,26 +1,21 @@
 <?php
     include("con_db.php");
-
-    if(isset($_GET['editar'])){
-        $editar_id = $_GET['editar'];
-
-        $consulta = "SELECT * FROM datosAlumnos WHERE idAlumno='$editar_id'";
-        $ejecutar = mysqli_query($conex,$consulta);
-
-        $fila = mysqli_fetch_array($ejecutar);
-
-        $id = $fila['idAlumno'];
-        $nombre = $fila['nombreAlumno'];
-        $apellido = $fila['apellidoAlumno'];
-        $dni = $fila['dniAlumno'];
-        $curso = $fila['curso'];
-        $asignatura = $fila['asignatura'];
-    }
+    $editar_id = $_GET['editar'];
+    $consulta = "SELECT * FROM datosAlumnos WHERE idAlumno='$editar_id'";
+    $ejecutar = mysqli_query($conex,$consulta);
+    $fila = mysqli_fetch_array($ejecutar);
+    $id = $fila['idAlumno'];
+    $nombre = $fila['nombreAlumno'];
+    $apellido = $fila['apellidoAlumno'];
+    $dni = $fila['dniAlumno'];
+    $curso = $fila['curso'];
+    $asignatura = $fila['asignatura'];
+    $foto = $fila['foto'];
 ?>
 </br>
-<form method="POST" action="">
+<form method="POST" action="" enctype="multipart/form-data"> 
     <input type="hidden" name="id" value="<?php echo $id?>">
-
+    <input type="hidden" name="foto" value="<?php echo $foto?>">
     <input type="text" name="nombre" value="<?php echo $nombre?>" required></br>
 
     <input type="text" name="apellido" value="<?php echo $apellido?>" required></br>
@@ -55,12 +50,13 @@
         $actualizar_dni = $_POST['dni'];
         $actualizar_curso = $_POST['curso'];
         $actualizar_asignatura = $_POST['asignatura'];
-        $actualizar_archivo = $_POST['foto'];
 
         if(is_uploaded_file($_FILES['foto']['tmp_name'])){
             $actualizar_archivo = $_FILES['foto']['name'];
-            move_uploaded_file($_FILES['foto']['tmp_name'], 'imagenes/'.$archivo);
-		}
+            move_uploaded_file($_FILES['foto']['tmp_name'], 'imagenes/'.$actualizar_archivo);
+		}else{
+            $actualizar_archivo = $_POST['foto'];
+        }
 
         $actualizar = "UPDATE datosAlumnos SET nombreAlumno='$actualizar_nombre', apellidoAlumno='$actualizar_apellido', dniAlumno='$actualizar_dni', curso='$actualizar_curso', asignatura='$actualizar_asignatura', foto='$actualizar_archivo' WHERE idAlumno='$editar_id'";
 

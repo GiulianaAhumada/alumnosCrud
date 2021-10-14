@@ -68,7 +68,7 @@
                     <th> DNI </th>
                     <th> Curso </th>
                     <th> Asignatura </th>
-                    <th> </th>
+                    <th> Foto</th>
                     <th> Editar </th>
                     <th> Eliminar </th>
                 </tr>
